@@ -1,0 +1,92 @@
+{% extends "base/layout.twig.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-7 mx-auto">
+        <div class="card card-body bg-light mt-5">
+            <h2>MenüBestellung / Mensa BZT Frauenfeld</h2>
+            <p>Wählen Sie bitte die entsprechenden Optionen</p>
+
+            <form action="{{ urlroot }}/Orders/add" method="post">
+
+
+                <div class="form-group">
+                    <label for="username">Kundenname: <sup>*</sup></label>
+                    {% if data.username_err is empty %}
+                    <input type="text" name="username" value="{{ data.username }}" class="form-control form-control-lg">
+                    {% else %}
+                    <input type="text" name="username" value="{{ data.username }}"
+                        class="form-control form-control-lg is-invalid">
+                    <span class="invalid-feedback"> {{ data.username_err }}</span>
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">Kunden-Email: <sup>*</sup></label>
+                    {% if data.email_err is empty %}
+                    <input type="email" name="email" value="{{ data.email }}" class="form-control form-control-lg">
+                    {% else %}
+                    <input type="email" name="email" value="{{ data.email }}"
+                        class="form-control form-control-lg is-invalid">
+                    <span class="invalid-feedback"> {{ data.email_err }}</span>
+                    {% endif %}
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    {% if data.refmenue_err is not empty %}
+                    <p style="color:red;">Wählen Sie ein Menü aus:</p>
+                    {% else %}
+                    <p>Wählen Sie ein Menü aus:</p>
+                    {% endif %}
+
+
+                    <fieldset class="border p-2">
+                        <legend class="w-auto">Menü-Auswahl</legend>
+                        <div class="radio">
+
+                            {% for menu in menues %}
+
+                            <div class="card card-body bg-light mt-3">
+                                <label>
+                                    <input type="radio" name="refmenue" value="{{ menu.id }}">
+                                    <h4>{{ menu.title}}</h4>
+                                    <p>{{ menu.description}}</p>
+                                    <p><strong>Preis : {{ menu.preis }}</strong></p>
+                                </label>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="comment">Bemerkung zu Bestellung:</label>
+                    <textarea class="form-control form-control-lg" rows="5" name="comment"
+                        value="{{ data.comment }}"></textarea>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Bestellung abschicken" class="btn btn-success btn-block">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

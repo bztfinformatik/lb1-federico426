@@ -1,0 +1,5 @@
+# Liste aller Inhalte die von git ignoriert werden
+
+# Mysql-Daten ignorieren
+**/mysqldata
+
