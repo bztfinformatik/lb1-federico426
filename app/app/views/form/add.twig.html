@@ -1,0 +1,99 @@
+{% extends "base/layout.twig.html" %}
+
+{% block content %}
+<script type='text/javascript'>
+        function addFields2(){
+            var number = document.getElementById("numberOfClaims").value;
+            var container = document.getElementById("container1");
+            
+            var innerhtml;
+
+            for (i=1; i <= number; i++) {
+                innerhtml = innerhtml + '<div class="row"><div class="col-2"><label for="dateform'+i+'">Datum <sup>*</sup></label><input type="date" name="dateform'+i+'" min="2018-01-01" value="dateform'+i+'" class="input-group date"></div><div class="col-3"><div class="form-group"><label for="product'+i+'">Was <sup>*</sup></label><input type="text" name="product'+i+'" value="" class="form-control form-control-lg"></div></div><div class="col-2"><div class="form-group"><label for="price'+i+'">Betrag in CHF <sup>*</sup></label><input type="text" name="price'+i+'" value="" class="form-control form-control-lg"></div></div><div class="form-group"><label for="VAT'+i+'">MWST in Prozent <sup>*</sup></label><input type="text" name="VAT'+i+'" value="7,5%" class="form-control form-control-lg"></div><div class="form-group"><label for="account'+i+'">Konto <sup>*</sup></label><select class="form-control form-control-lg" id="account'+i+'"><option value="100">Konto 100</option><option value="200">Konto 200</option></select></div></div>'
+            };
+            innerhtml=innerhtml+'<div class="row"><div class="col"><input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success"></div></div>';
+            container.innerHTML = innerhtml;
+        }
+    </script>
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <div class="card card-body bg-light mt-5">
+            <h2>Neues Spesen Formular</h2>
+            <form action="{{ urlroot }}/Forms/add" method="post">
+                <div class="form-group">
+                    <label for="name">Name <sup>*</sup></label>
+                    {% if data.name_err is empty %}
+                    <input type="text" name="name" value="{{ data.name }}" class="form-control form-control-lg">
+                    {% else %}
+                    <input type="text" name="name" value="{{ data.name }}"
+                        class="form-control form-control-lg is-invalid">
+                    <span class="invalid-feedback"> {{ data.name_err }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Nachname <sup>*</sup></label>
+                    {% if data.lastname_err is empty %}
+                    <input type="text" name="lastname" value="{{ data.lastname }}" class="form-control form-control-lg">
+                    {% else %}
+                    <input type="text" name="lastname" value="{{ data.lastname }}"
+                        class="form-control form-control-lg is-invalid">
+                    <span class="invalid-feedback"> {{ data.lastname_err }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <h3>Abrechnungszeitraum</h3>
+                    <label for="datefrom">Von <sup>*</sup></label>
+                    <input type="date" name="datefrom" min="2018-01-01" value="{{ data.datefrom }}" class="input-group date"><br>
+                    <label for="dateto">Bis <sup>*</sup></label>
+                    <input type="date" name="dateto" max="2100-01-01" value="{{ data.dateto }}" class="input-group date"><br>
+                </div>
+                <div class="form-group">
+                    <label for="event">Anlass <sup>*</sup></label>
+                    {% if data.event_err is empty %}
+                    <input type="text" name="event" value="{{ data.event }}" class="form-control form-control-lg">
+                    {% else %}
+                    <input type="text" name="event" value="{{ data.event }}"
+                        class="form-control form-control-lg is-invalid">
+                    <span class="invalid-feedback"> {{ data.event_err }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="company">Unternehmen <sup>*</sup></label>
+                    <select class="form-control form-control-lg" id="FormControlSelect">
+                        <option value="Casasoft">Casasoft</option>
+                        <option value="Immoscout24">Immoscout24</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="zip">Postleitzahl <sup>*</sup></label>
+                            <input id="zip" name="zip" type="number" value="{{ data.zip }}" class="form-control form-control-md">
+                        </div>    
+                    </div>
+                    <div class="col-9">
+                        <div class="form-group">
+                            <label for="location">Ort <sup>*</sup></label>
+                            {% if data.location_err is empty %}
+                                <input type="text" name="location" value="{{ data.location }}" class="form-control form-control-md">
+                            {% else %}
+                                <input type="text" name="location" value="{{ data.comapny }}" class="form-control form-control-lg is-invalid">
+                                <span class="invalid-feedback"> {{ data.location_err }}</span>
+                            {% endif %}
+                        </div>
+                    </div>  
+                </div>
+                <label>Anzahl Kosteneinträge</label>
+                <input class="form-control col-1" type="text" id="numberOfClaims" name="numberOfClaims" value="">
+                 <a  id="filldetails" onclick="addFields2()" class="btn btn-info ">Hinzufügen</a><br>
+                <div id="container1"/>
+                </div><br>
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

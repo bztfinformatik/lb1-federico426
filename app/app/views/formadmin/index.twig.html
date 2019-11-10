@@ -1,0 +1,45 @@
+{% extends "base/layout.twig.html" %}
+
+{% block content %}
+
+<!-- Wir überschreiben den Content-Block -->
+<h1 class="mt-5">Aktuelle Bestellungen: </h1>
+
+<!-- {{ dump(data) }} -->
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">von</th>
+            <th scope="col">bis</th>
+            <th scope="col">Total</th>
+            <th scope="col">Status</th>
+            <th scope="col">Aktion</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for datarow in data %}
+        <tr>
+            <th scope="row">{{ datarow.id }}</th>
+            <td>{{ datarow.name }}</td>
+            <td>{{ datarow.lastname }}</td>
+            <td>{{ datarow.datefrom }}</td>
+            <td>{{ datarow.dateto }}</td>
+            <td>{{ datarow.total }} CHF</td>
+            {% if datarow.status == true %}
+            <td>Akzeptiert</td>
+            {% elseif dararow.status == false %}
+            <td>Offen</td><td><a class="btn btn-success" style="color: white;">Akzeptieren</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}
