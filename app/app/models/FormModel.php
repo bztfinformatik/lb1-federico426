@@ -2,30 +2,54 @@
 
 class FormModel extends BaseModel
 {
-/*  private $id;
-    private $userid;
-    private $name;
-    private $email;
-    private $comment;
-    private $adminmodified;
-    private $refmenue;
-    private $status;
-    private $dateorder;
-    private $wishtime;
- */
 
     public function fakewriteData($data)
+
+    
+    //private $lastname = $data['lastname'];
+    //private $datefrom = $data['datefrom'];
     {
-        die(var_dump($data));
+        $name = $data['name'];
+        $lastname = $data['lastname'];
+        $datefrom = $data['datefrom'];
+        $dateto = $data['dateto'];
+
+
+        
+        $id = 12;
+        $listingids = 12;
+        $total = 12.5;
+        $status = 1;
+
+        var_dump($data);
+       // die(var_dump($data));
+
+        $this->db->query("INSERT INTO Forms (id, name, lastname, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :datefrom, :dateto, :listingids, :total, :status)");
+        $this->db->bind(':id', $id);
+        $this->db->bind(':name', $name);
+        $this->db->bind(':lastname', $lastname);
+        $this->db->bind(':datefrom', $datefrom);
+        $this->db->bind(':dateto', $dateto);
+        $this->db->bind(':listingids', $listingids);
+        $this->db->bind(':total', $total);
+        $this->db->bind(':status', $status);
+        
+        $this->db->execute();
         
     }
 
     public function getFakeFormData()
     {
-        $data = [
-            ['id' => '1', 'name' => 'Federico', 'lastname' => 'Degan','datefrom' => '01/01/2019' ,'dateto' => '31/12/2019','listingids' => '1', 'total' => '30.20','status' => true],
-            ['id' => '2', 'name' => 'Federico Deux', 'lastname' => 'Deuxan','datefrom' => '01/01/2019' ,'dateto' => '31/12/2019','listingids' => '2', 'total' => '60.20','status' => false]
-        ];
+
+        $id = 1;
+
+        /*$this->db->query("SELECT * FROM Forms WHERE id = :id"); // 1. id = datenbank feld 2. platzhalter für variable
+        $this->db->bind(":id", $id);
+        $data = $this->db->resultSet();*/
+
+        $this->db->query("SELECT * FROM Forms"); // 1. id = datenbank feld 2. platzhalter für variable
+
+        $data = $this->db->resultSet();
 
         return $data;
     }

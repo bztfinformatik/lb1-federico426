@@ -14,7 +14,8 @@ class Formadmin extends Controller
         $listingsModel = $this->model('ListingsModel');
         $listingsArray = $listingsModel->getFakeListingsDataArray();
         $formArray = $formModel->getFakeFormData();
-        //$formModel = $this->model('FormModel');
+        //var_dump($formArray);
+        $formModel = $this->model('FormModel');
         //$formArray = $formModel->getFakeFormData();
 
         // Anstatt Dinge in der GUI kompliziert zu machen, bauen wir hier die Dinge so zusammen wie 

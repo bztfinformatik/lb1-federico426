@@ -1,20 +1,7 @@
 {% extends "base/layout.twig.html" %}
 
 {% block content %}
-<script type='text/javascript'>
-        function addFields2(){
-            var number = document.getElementById("numberOfClaims").value;
-            var container = document.getElementById("container1");
-            
-            var innerhtml;
 
-            for (i=1; i <= number; i++) {
-                innerhtml = innerhtml + '<div class="row"><div class="col-2"><label for="dateform'+i+'">Datum <sup>*</sup></label><input type="date" name="dateform'+i+'" min="2018-01-01" value="dateform'+i+'" class="input-group date"></div><div class="col-3"><div class="form-group"><label for="product'+i+'">Was <sup>*</sup></label><input type="text" name="product'+i+'" value="" class="form-control form-control-lg"></div></div><div class="col-2"><div class="form-group"><label for="price'+i+'">Betrag in CHF <sup>*</sup></label><input type="text" name="price'+i+'" value="" class="form-control form-control-lg"></div></div><div class="form-group"><label for="VAT'+i+'">MWST in Prozent <sup>*</sup></label><input type="text" name="VAT'+i+'" value="7,5%" class="form-control form-control-lg"></div><div class="form-group"><label for="account'+i+'">Konto <sup>*</sup></label><select class="form-control form-control-lg" id="account'+i+'"><option value="100">Konto 100</option><option value="200">Konto 200</option></select></div></div>'
-            };
-            innerhtml=innerhtml+'<div class="row"><div class="col"><input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success"></div></div>';
-            container.innerHTML = innerhtml;
-        }
-    </script>
 <div class="row">
     <div class="col-md-12 mx-auto">
         <div class="card card-body bg-light mt-5">
@@ -83,13 +70,166 @@
                         </div>
                     </div>  
                 </div>
-                <label>Anzahl Kosteneinträge</label>
-                <input class="form-control col-1" type="text" id="numberOfClaims" name="numberOfClaims" value="">
-                 <a  id="filldetails" onclick="addFields2()" class="btn btn-info ">Hinzufügen</a><br>
-                <div id="container1"/>
-                </div><br>
-
-                
+                <div id="item1">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="dateform1">Datum <sup>*</sup></label>
+                            <input type="date" name="dateform1'" min="2018-01-01" value="{{ data.dateform1 }}" class="input-group date">
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="product1">Was <sup>*</sup></label>
+                                <input type="text" name="product1" value="{{ data.product1 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="price1">Betrag in CHF <sup>*</sup></label>
+                                <input type="text" name="price1" value="{{ data.price1 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VAT1">MWST in Prozent <sup>*</sup></label>
+                            <input type="text" name="VAT1" value="{{ data.VAT1 }}" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group">
+                            <label for="account1">Konto <sup>*</sup></label>
+                            <select class="form-control form-control-lg" id="account1">
+                                <option value="100">Konto 100</option>
+                                <option value="200">Konto 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="item2">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="dateform2">Datum <sup>*</sup></label>
+                            <input type="date" name="dateform2'" min="2018-01-01" value="{{ data.dateform2 }}" class="input-group date">
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="product2">Was <sup>*</sup></label>
+                                <input type="text" name="product2" value="{{ data.product2 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="price2">Betrag in CHF <sup>*</sup></label>
+                                <input type="text" name="price1" value="{{ data.price2 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VAT2">MWST in Prozent <sup>*</sup></label>
+                            <input type="text" name="VAT1" value="{{ data.VAT2 }}" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group">
+                            <label for="account2">Konto <sup>*</sup></label>
+                            <select class="form-control form-control-lg" id="account2">
+                                <option value="100">Konto 100</option>
+                                <option value="200">Konto 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="item3">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="dateform3">Datum <sup>*</sup></label>
+                            <input type="date" name="dateform3'" min="2018-01-01" value="{{ data.dateform3 }}" class="input-group date">
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="product3">Was <sup>*</sup></label>
+                                <input type="text" name="product3" value="{{ data.product3 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="price3">Betrag in CHF <sup>*</sup></label>
+                                <input type="text" name="price3" value="{{ data.price3 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VAT3">MWST in Prozent <sup>*</sup></label>
+                            <input type="text" name="VAT3" value="{{ data.VAT3 }}" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group">
+                            <label for="account3">Konto <sup>*</sup></label>
+                            <select class="form-control form-control-lg" id="account3">
+                                <option value="100">Konto 100</option>
+                                <option value="200">Konto 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="item4">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="dateform4">Datum <sup>*</sup></label>
+                            <input type="date" name="dateform4'" min="2018-01-01" value="{{ data.dateform4 }}" class="input-group date">
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="product4">Was <sup>*</sup></label>
+                                <input type="text" name="product4" value="{{ data.product4 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="price4">Betrag in CHF <sup>*</sup></label>
+                                <input type="text" name="price4" value="{{ data.price4 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VAT4">MWST in Prozent <sup>*</sup></label>
+                            <input type="text" name="VAT5" value="{{ data.VAT4 }}" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group">
+                            <label for="account4">Konto <sup>*</sup></label>
+                            <select class="form-control form-control-lg" id="account4">
+                                <option value="100">Konto 100</option>
+                                <option value="200">Konto 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="item5">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="dateform5">Datum <sup>*</sup></label>
+                            <input type="date" name="dateform5'" min="2018-01-01" value="{{ data.dateform5 }}" class="input-group date">
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="product5">Was <sup>*</sup></label>
+                                <input type="text" name="product5" value="{{ data.product5 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="price5">Betrag in CHF <sup>*</sup></label>
+                                <input type="text" name="price5" value="{{ data.price5 }}" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VAT5">MWST in Prozent <sup>*</sup></label>
+                            <input type="text" name="VAT5" value="{{ data.VAT5 }}" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group">
+                            <label for="account5">Konto <sup>*</sup></label>
+                            <select class="form-control form-control-lg" id="account5">
+                                <option value="100">Konto 100</option>
+                                <option value="200">Konto 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
