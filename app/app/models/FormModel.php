@@ -22,8 +22,8 @@ class FormModel extends BaseModel
 
         $this->writeListings($data, $id);
 
-        $total = 12.5;
-        $status = 1;
+        $total = ($data['price1']/100*$data['VAT1'])+$data['price1'];
+        $status = 0;
 
         //var_dump($data);
        // die(var_dump($data));

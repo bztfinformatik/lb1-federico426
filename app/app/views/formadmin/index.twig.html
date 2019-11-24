@@ -34,7 +34,13 @@
             {% if datarow.status == true %}
             <td>Akzeptiert</td>
             {% elseif dararow.status == false %}
-            <td>Offen</td><td><a class="btn btn-success" style="color: white;">Akzeptieren</a></td>
+            <td>Offen</td>
+            <td>
+                <form action="{{ urlroot }}/Forms/change" method="post">
+                    <input type="text" name="id" value="{{ datarow.id }}" class="form-control form-control-lg" style="display: none;">
+                    <input type="submit" value="{{ datarow.id }} Akzeptieren" class="btn btn-success {{ datarow.id }}" style="color: white;"></a>
+                </form>
+            </td>
             {% endif %}
         </tr>
         {% endfor %}

@@ -210,5 +210,21 @@ class Forms extends Controller
 
             echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
         }
+        header("Location: http://localhost:8000/public/Formadmin/");
+    }
+
+    public function change(){
+       
+       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_POST['id'];
+        var_dump($_POST);
+
+        echo $id;
+
+
+       }else {
+        echo "No Post";
+       }
+      header("Location: http://localhost:8000/public/Formadmin/");
     }
 }
