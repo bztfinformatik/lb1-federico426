@@ -74,6 +74,13 @@ class FormModel extends BaseModel
 
     }
 
+    public function acceptSet($id){
+        $id = $id;
+        $this->db->query("UPDATE Forms SET status = 1 WHERE id = '$id'");
+        $this->db->execute();
+
+    }
+
 
     public function getFakeFormData()
     {

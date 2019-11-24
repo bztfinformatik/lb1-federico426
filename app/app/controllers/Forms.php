@@ -214,17 +214,18 @@ class Forms extends Controller
     }
 
     public function change(){
-       
+       $formModel = $this->model('FormModel');
        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
-        var_dump($_POST);
+        //var_dump($_POST);
 
-        echo $id;
+        //echo $id;
+        $formModel->acceptSet($id);
 
 
        }else {
         echo "No Post";
        }
-      header("Location: http://localhost:8000/public/Formadmin/");
+    header("Location: http://localhost:8000/public/Formadmin/");
     }
 }
