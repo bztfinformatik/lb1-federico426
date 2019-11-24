@@ -70,37 +70,41 @@
                         </div>
                     </div>  
                 </div>
-                <div id="item1">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="dateform1">Datum <sup>*</sup></label>
-                            <input type="date" name="dateform1'" min="2018-01-01" value="{{ data.dateform1 }}" class="input-group date">
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="product1">Was <sup>*</sup></label>
-                                <input type="text" name="product1" value="{{ data.product1 }}" class="form-control form-control-lg">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="form-group">
-                                <label for="price1">Betrag in CHF <sup>*</sup></label>
-                                <input type="text" name="price1" value="{{ data.price1 }}" class="form-control form-control-lg">
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="dateform1">Datum <sup>*</sup></label>
+                        <input type="date" name="dateform1" min="2018-01-01" value="{{ data.dateform1 }}" class="input-group date">
+                    </div>
+                    <div class="col-3">
                         <div class="form-group">
-                            <label for="VAT1">MWST in Prozent <sup>*</sup></label>
-                            <input type="text" name="VAT1" value="{{ data.VAT1 }}" class="form-control form-control-lg">
-                        </div>
-                        <div class="form-group">
-                            <label for="account1">Konto <sup>*</sup></label>
-                            <select class="form-control form-control-lg" id="account1">
-                                <option value="100">Konto 100</option>
-                                <option value="200">Konto 200</option>
-                            </select>
+                            <label for="product1">Was <sup>*</sup></label>
+                            <input type="text" name="product1" value="{{ data.product1 }}" class="form-control form-control-lg">
                         </div>
                     </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="price1">Betrag in CHF <sup>*</sup></label>
+                            <input type="text" name="price1" value="{{ data.price1 }}" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="VAT1">MWST in Prozent <sup>*</sup></label>
+                        <input type="text" name="VAT1" value="{{ data.VAT1 }}" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="account1">Konto <sup>*</sup></label>
+                        <select class="form-control form-control-lg" id="account1">
+                            <option value="100">Konto 100</option>
+                            <option value="200">Konto 200</option>
+                        </select>
+                    </div>
                 </div>
+                <!--
+
+                    Ich habe mich dazu ernschieden in diesem Schritt nur ein Feld funktionstüchtig zu machen, sobald alles läuft ist es einfach die applikation mit Feldern zu erweitern
+
+
+                    
                 <div id="item2">
                     <div class="row">
                         <div class="col-2">
@@ -116,12 +120,12 @@
                         <div class="col-2">
                             <div class="form-group">
                                 <label for="price2">Betrag in CHF <sup>*</sup></label>
-                                <input type="text" name="price1" value="{{ data.price2 }}" class="form-control form-control-lg">
+                                <input type="text" name="price2" value="{{ data.price2 }}" class="form-control form-control-lg">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="VAT2">MWST in Prozent <sup>*</sup></label>
-                            <input type="text" name="VAT1" value="{{ data.VAT2 }}" class="form-control form-control-lg">
+                            <input type="text" name="VAT2" value="{{ data.VAT2 }}" class="form-control form-control-lg">
                         </div>
                         <div class="form-group">
                             <label for="account2">Konto <sup>*</sup></label>
@@ -183,7 +187,7 @@
                         </div>
                         <div class="form-group">
                             <label for="VAT4">MWST in Prozent <sup>*</sup></label>
-                            <input type="text" name="VAT5" value="{{ data.VAT4 }}" class="form-control form-control-lg">
+                            <input type="text" name="VAT4" value="{{ data.VAT4 }}" class="form-control form-control-lg">
                         </div>
                         <div class="form-group">
                             <label for="account4">Konto <sup>*</sup></label>
@@ -225,6 +229,7 @@
                         </div>
                     </div>
                 </div>
+            -->
                 <div class="row">
                     <div class="col">
                         <input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success">

@@ -15,13 +15,17 @@ class FormModel extends BaseModel
         $dateto = $data['dateto'];
 
 
-        
-        $id = 12;
-        $listingids = 12;
+        $this->db->query("SELECT id FROM Forms ORDER BY id DESC LIMIT 1");
+        $id2 = $this->db->single();
+        $id = $id2[0]+1;
+        $listingids = $id;
+
+        $this->writeListings($data, $id);
+
         $total = 12.5;
         $status = 1;
 
-        var_dump($data);
+        //var_dump($data);
        // die(var_dump($data));
 
         $this->db->query("INSERT INTO Forms (id, name, lastname, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :datefrom, :dateto, :listingids, :total, :status)");
@@ -37,6 +41,39 @@ class FormModel extends BaseModel
         $this->db->execute();
         
     }
+
+    public function writeListings($data, $idin){
+        $formid = $idin;
+        $id = 0;
+
+        var_dump($data);
+
+        $formdate = $data['dateform1'];
+        $description = $data['product1'];
+        $price = $data['price1'];
+        $VAT = $data['VAT1'];
+        $account = 100;
+
+
+
+        $this->db->query("INSERT INTO Listings (id, formid, formdate, description, price, VAT, account) VALUES (:id, :formid, :formdate, :description, :price, :VAT, :account)");
+
+        $this->db->bind(':id', $id);
+        $this->db->bind(':formid', $formid);
+        $this->db->bind(':formdate', $formdate);
+        $this->db->bind(':description', $description);
+        $this->db->bind(':price', $price);
+        $this->db->bind(':VAT', $VAT);
+        $this->db->bind(':account', $account);
+
+        $this->db->execute();
+
+
+
+
+
+    }
+
 
     public function getFakeFormData()
     {

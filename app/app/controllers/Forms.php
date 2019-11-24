@@ -19,13 +19,13 @@ class Forms extends Controller
     public function add()
     {
         $formModel = $this->model('FormModel');
-        $menueModel = $this->model('MenueModel');
-        $menueArray = $menueModel->getFakeMenueDataArray();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process Form -> weil Post-Aufruf
 
             // Zuerst mal trimen und filtern auf Gesunde Daten
+
+
             $name = trim(
                 filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING)
             );
