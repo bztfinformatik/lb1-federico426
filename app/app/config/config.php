@@ -1,8 +1,8 @@
 <?php
 //DB Variabeln
 define('DB_HOST', 'mysql');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('DB_USER', 'formUser');
+define('DB_PASS', 'formUser');
 define('DB_NAME', 'formDB');
 
 // Unsere APP-Root 

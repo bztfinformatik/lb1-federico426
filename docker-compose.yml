@@ -20,8 +20,8 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: formUser
+      MYSQL_PASSWORD: formUser
       MYSQL_DATABASE: formDB
     volumes:
       - ./mysql/initscripts:/docker-entrypoint-initdb.d
