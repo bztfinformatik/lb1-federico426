@@ -19,11 +19,11 @@ CREATE TABLE `Forms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `Forms` (`id`, `name`, `lastname`, `datefrom`, `dateto`, `listingids`, `total`, `status`) VALUES
-(1, 'Federico', 'Degan',  '2019-11-17', '2019-11-20', 1,  12.5, 1),
+(1, 'Federico', 'Degan',  '2019-11-17', '2019-11-20', 1,  12.5, 0),
 (2, 'Federico Degan', 'Degan',  '2019-11-13', '2019-11-21', 2,  123,  1),
-(3, 'Federico Degan', 'Degan',  '2019-11-24', '2019-11-24', 3,  274.29, 1),
+(3, 'Federico Degan', 'Degan',  '2019-11-24', '2019-11-24', 3,  274.29, 0),
 (4, 'Federico Degan', 'Degan',  '2019-11-24', '2019-11-24', 4,  137.76, 1),
-(5, 'Federico Degan', 'Degan',  '2019-11-28', '2019-11-29', 5,  262.08, 1)
+(5, 'Federico Degan', 'Degan',  '2019-11-28', '2019-11-29', 5,  262.08, 0)
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `lastname` = VALUES(`lastname`), `datefrom` = VALUES(`datefrom`), `dateto` = VALUES(`dateto`), `listingids` = VALUES(`listingids`), `total` = VALUES(`total`), `status` = VALUES(`status`);
 
 DROP TABLE IF EXISTS `Listings`;
