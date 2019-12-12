@@ -3,7 +3,7 @@
 SET NAMES utf8;
 SET time_zone = '+00:00';
 
-USE `mensa`;
+USE `formDB`;
 
 SET NAMES utf8mb4;
 
