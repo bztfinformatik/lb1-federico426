@@ -1,0 +1,55 @@
+{% extends "base/layout.twig.html" %}
+
+{% block content %}
+
+<!-- Wir überschreiben den Content-Block -->
+<h1 class="mt-5">Neue Spesenposition </h1>
+
+<!-- {{ dump(data) }} -->
+
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <div class="card card-body bg-light mt-5">
+            <h2>Neue Spesenposition</h2>
+            <form action="{{ urlroot }}/Listings/add" method="post">
+                <div class="row">
+                    <div class="col-2">
+                        <label for="dateform1">Datum <sup>*</sup></label>
+                        <input type="date" name="dateform1" min="2018-01-01" value="{{ data.dateform1 }}" class="input-group date">
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="product1">Was <sup>*</sup></label>
+                            <input type="text" name="product1" value="{{ data.product1 }}" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="price1">Betrag in CHF <sup>*</sup></label>
+                            <input type="text" name="price1" value="{{ data.price1 }}" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="VAT1">MWST in Prozent <sup>*</sup></label>
+                        <input type="text" name="VAT1" value="{{ data.VAT1 }}" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="account1">Konto <sup>*</sup></label>
+                        <select class="form-control form-control-lg" id="account1">
+                            <option value="100">Konto 100</option>
+                            <option value="200">Konto 200</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

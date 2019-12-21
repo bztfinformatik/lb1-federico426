@@ -1,6 +1,6 @@
 <?php
 
-class Forms extends Controller
+class Listings extends Controller
 {
 
     private $user;
@@ -16,38 +16,10 @@ class Forms extends Controller
 
     public function add()
     {
-        $formModel = $this->model('FormModel');
+        $listingModel = $this->model('ListingsModel');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Process Form -> weil Post-Aufruf
 
-            // Zuerst mal trimen und filtern auf Gesunde Daten
-
-
-            $name = trim(
-                filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING)
-            );
-            $lastname = trim(
-                filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING)
-            );
-            $datefrom = trim(
-                filter_input(INPUT_POST, 'datefrom', FILTER_SANITIZE_STRING)
-            );
-            $dateto = trim(
-                filter_input(INPUT_POST, 'dateto', FILTER_SANITIZE_STRING)
-            );
-            $event = trim(
-                filter_input(INPUT_POST, 'event', FILTER_SANITIZE_STRING)
-            );
-            $company = trim(
-                filter_input(INPUT_POST, 'company', FILTER_SANITIZE_STRING)
-            );
-            $zip = trim(
-                filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING)
-            );
-            $location = trim(
-                filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING)
-            );
             $dateform1 = trim(
                 filter_input(INPUT_POST, 'dateform1', FILTER_SANITIZE_STRING)
             );
@@ -151,7 +123,7 @@ class Forms extends Controller
                 // Fehler vorhanden - Fehler anzeigen
                 // View laden mit Fehlern
 
-                echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+                echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
             }
 
         } else {
@@ -174,24 +146,9 @@ class Forms extends Controller
                 'location_err' => ''       // Form-Feld-Daten
             ];
 
-            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+            echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
     }
 
-    public function change(){
-       $formModel = $this->model('FormModel');
-       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id = $_POST['id'];
-        //var_dump($_POST);
-
-        //echo $id;
-        $formModel->acceptSet($id);
-
-
-       }else {
-        echo "No Post";
-       }
-    header("Location: http://localhost:8000/public/Formadmin/");
-    }
 }

@@ -19,7 +19,7 @@ class Users extends Controller
 
             if (!in_array("admin", $_SESSION['user_roles'])) {
                 // Wir sind eingeloggt, aber nicht Admin: Weg von hier
-                redirect('Orders/listmyorders');
+                redirect('Formadmin/');
             }
         }
 
@@ -39,7 +39,7 @@ class Users extends Controller
         // Kein Register für User die bereits eingeloggt sind
         if (isset($_SESSION['user_id'])) {
 
-            redirect('Orders/listmyorders');
+            redirect('Formadmin/');
         }
 
         $userModel = $this->model('UserModel');
@@ -146,7 +146,7 @@ class Users extends Controller
         // Kein Login für User die bereits eingeloggt sind
         if (isset($_SESSION['user_id'])) {
 
-            redirect('Orders/listmyorders');
+            redirect('Formadmin/');
         }
 
         $userModel = $this->model('UserModel');
@@ -233,7 +233,7 @@ class Users extends Controller
         // Keine Usersession für User die bereits eingeloggt sind
         if (isset($_SESSION['user_id'])) {
 
-            redirect('Orders/listmyorders');
+            redirect('Formadmin/');
         }
 
         // Der JSON-Inhalt aus MySQL kommt etwas komisch daher...Array machen und später in der Session speichern
@@ -244,7 +244,7 @@ class Users extends Controller
         $_SESSION['user_name'] = $user['name'];
         $_SESSION['user_roles'] = $rolesarray;
         
-        redirect('Orders/listmyorders');
+        redirect('Formadmin/');
     }
 
     /**
@@ -257,14 +257,14 @@ class Users extends Controller
         // Kein Logout für User die nicht eingeloggt sind
         if (!isset($_SESSION['user_id'])) {
 
-            redirect('Orders/listmyorders');
+            redirect('Formadmin/');
         }
 
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        redirect('Orders/index');
+        redirect('Formadmin/');
     }
 
     /**

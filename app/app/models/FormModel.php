@@ -3,7 +3,7 @@
 class FormModel extends BaseModel
 {
 
-    public function fakewriteData($data)
+    public function writeData($data)
 
     
     //private $lastname = $data['lastname'];
@@ -82,7 +82,7 @@ class FormModel extends BaseModel
     }
 
 
-    public function getFakeFormData()
+    public function getFormData()
     {
 
         $id = 1;

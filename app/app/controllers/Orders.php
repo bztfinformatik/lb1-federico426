@@ -103,7 +103,6 @@ class Orders extends Controller
 
     public function listmyorders()
     { 
-
         // Diese Var wird in Zukunft aus der Session kommen...so wie eingeloggt, so ist die Userid.
         $userid = 1;
 
