@@ -20,9 +20,10 @@ class FormModel extends BaseModel
         $id = $id2[0]+1;
         $listingids = $id;
 
-        $this->writeListings($data, $id);
+        //$this->writeListings($data, $id);
 
-        $total = ($data['price1']/100*$data['VAT1'])+$data['price1'];
+        //$total = ($data['price1']/100*$data['VAT1'])+$data['price1'];
+        $total = 123;
         $status = 0;
 
         //var_dump($data);
@@ -46,13 +47,13 @@ class FormModel extends BaseModel
         $formid = $idin;
         $id = 0;
 
-        var_dump($data);
-
-        $formdate = $data['dateform1'];
-        $description = $data['product1'];
-        $price = $data['price1'];
-        $VAT = $data['VAT1'];
+        //var_dump($data);
+        $formdate = $data['datefrom'];
+        $description = "test";
+        $price = "1234";
+        $VAT = "7";
         $account = 100;
+
 
 
 

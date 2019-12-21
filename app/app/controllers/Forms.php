@@ -11,6 +11,7 @@ class Forms extends Controller
          * Hier könnte eine allgemeine Übersichts-Auswertung der aktuellen Auslastung der
          * Mense platziert werden
          */
+
         echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT]);
     }
 
@@ -81,16 +82,7 @@ class Forms extends Controller
                 'zip' => $zip,       // Form-Feld-Daten
                 'zip_err' => '',
                 'location' => $location,       // Form-Feld-Daten
-                'location_err' => '',
-                'dateform1' => $dateform1,
-                'dateform1_err' => '',
-                'product1' => $product1,
-                'product1_err' => '',
-                'price1' => $price1,
-                'price1_err' => '',
-                'VAT1' => $VAT1,
-                'VAT1_err' => ''
-
+                'location_err' => ''
             ];
 
 
@@ -138,20 +130,20 @@ class Forms extends Controller
             }
 
 
-
+            echo "wir sind hier <br>";
             // Keine Errors vorhanden
             if (empty($data['name_err']) && empty($data['lastname_err']) && empty($data['event_err']) && empty($data['company_err']) )
             {
                 // Alles gut, keine Fehler vorhanden
                 // Späteres TODO: Auf DB schreiben
                 //die('SUCCESS');
+                echo "wir sind hier <br>";
                 $formModel->writeData($data);
             }
             else {
                 // Fehler vorhanden - Fehler anzeigen
                 // View laden mit Fehlern
-
-                echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+                echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
             }
 
         } else {
@@ -173,7 +165,6 @@ class Forms extends Controller
                 'location' => '',       // Form-Feld-Daten
                 'location_err' => ''       // Form-Feld-Daten
             ];
-
             echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
