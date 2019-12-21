@@ -11,6 +11,7 @@ class FormModel extends BaseModel
     {
         $name = $data['name'];
         $lastname = $data['lastname'];
+        $event = $data['event'];
         $datefrom = $data['datefrom'];
         $dateto = $data['dateto'];
 
@@ -29,10 +30,11 @@ class FormModel extends BaseModel
         //var_dump($data);
        // die(var_dump($data));
 
-        $this->db->query("INSERT INTO Forms (id, name, lastname, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :datefrom, :dateto, :listingids, :total, :status)");
+        $this->db->query("INSERT INTO Forms (id, name, lastname, event, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :event, :datefrom, :dateto, :listingids, :total, :status)");
         $this->db->bind(':id', $id);
         $this->db->bind(':name', $name);
         $this->db->bind(':lastname', $lastname);
+        $this->db->bind(':event', $event);
         $this->db->bind(':datefrom', $datefrom);
         $this->db->bind(':dateto', $dateto);
         $this->db->bind(':listingids', $listingids);
