@@ -24,7 +24,7 @@ class Forms extends Controller
 
             // Zuerst mal trimen und filtern auf Gesunde Daten
 
-
+            $email = $_SESSION['user_email'];
             $name = trim(
                 filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING)
             );
@@ -67,6 +67,7 @@ class Forms extends Controller
 
             // Daten setzen
             $data = [
+                'email' => $email,
                 'name' => $name,       // Form-Feld-Daten
                 'name_err' => '',
                 'lastname' => $lastname,       // Form-Feld-Daten

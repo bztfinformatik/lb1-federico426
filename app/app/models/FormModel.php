@@ -9,6 +9,7 @@ class FormModel extends BaseModel
     //private $lastname = $data['lastname'];
     //private $datefrom = $data['datefrom'];
     {
+        $email = $data['email'];
         $name = $data['name'];
         $lastname = $data['lastname'];
         $event = $data['event'];
@@ -28,11 +29,10 @@ class FormModel extends BaseModel
         $total = 123;
         $status = 0;
 
-        //var_dump($data);
-       // die(var_dump($data));
 
-        $this->db->query("INSERT INTO Forms (id, name, lastname, event, company, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :event, :datefrom, :dateto, :listingids, :total, :status)");
+        $this->db->query("INSERT INTO Forms (id, email, name, lastname, event, company, datefrom, dateto, listingids, total, status) VALUES (:id, :email, :name, :lastname, :event, :company, :datefrom, :dateto, :listingids, :total, :status)");
         $this->db->bind(':id', $id);
+        $this->db->bind(':email', $email);
         $this->db->bind(':name', $name);
         $this->db->bind(':lastname', $lastname);
         $this->db->bind(':event', $event);
@@ -47,42 +47,23 @@ class FormModel extends BaseModel
         
     }
 
-    public function writeListings($data, $idin){
-        $formid = $idin;
-        $id = 0;
-
-        //var_dump($data);
-        $formdate = $data['datefrom'];
-        $description = "test";
-        $price = "1234";
-        $VAT = "7";
-        $account = 100;
-
-
-
-
-        $this->db->query("INSERT INTO Listings (id, formid, formdate, description, price, VAT, account) VALUES (:id, :formid, :formdate, :description, :price, :VAT, :account)");
-
-        $this->db->bind(':id', $id);
-        $this->db->bind(':formid', $formid);
-        $this->db->bind(':formdate', $formdate);
-        $this->db->bind(':description', $description);
-        $this->db->bind(':price', $price);
-        $this->db->bind(':VAT', $VAT);
-        $this->db->bind(':account', $account);
-
-        $this->db->execute();
-
-
-
-
-
-    }
+    
 
     public function acceptSet($id){
         $id = $id;
         $this->db->query("UPDATE Forms SET status = 1 WHERE id = '$id'");
         $this->db->execute();
+
+    }
+
+    public function getCompleteEntry($id){
+        $id = $id;
+        $this->db->query("SELECT * FROM Forms WHERE id = '$id'");
+        $formEntry = $this->db->resultSet();
+
+        var_dump($formEntry);
+
+
 
     }
 

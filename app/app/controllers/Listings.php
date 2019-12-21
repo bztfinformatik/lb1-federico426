@@ -20,6 +20,9 @@ class Listings extends Controller
         $formModel = $this->model('FormModel');
         $forms = $formModel->getFormData();
 
+        echo "<br><br><br><br><br><br>";
+        var_dump($_SESSION);
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //var_dump($_POST);
