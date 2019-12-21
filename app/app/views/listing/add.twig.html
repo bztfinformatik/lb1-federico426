@@ -13,6 +13,14 @@
             <h2>Neue Spesenposition</h2>
             <form action="{{ urlroot }}/Listings/add" method="post">
                 <div class="row">
+                    <div class="form-group">
+                        <label for="event1">Event <sup>*</sup></label>
+                        <select class="form-control form-control-lg" id="event1" name="event1">
+                            {% for form in forms %}
+                                <option value="{{ form.id }}">{{ form.event }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <div class="col-2">
                         <label for="dateform1">Datum <sup>*</sup></label>
                         <input type="date" name="dateform1" min="2018-01-01" value="{{ data.dateform1 }}" class="input-group date">
@@ -40,7 +48,9 @@
                             <option value="200">Konto 200</option>
                         </select>
                     </div>
+                    
                 </div>
+                
                 <div class="row">
                     <div class="col">
                         <input type="submit" value="Neue Spesenabrechnung erstellen" class="btn btn-success">

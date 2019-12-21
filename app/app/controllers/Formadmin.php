@@ -14,15 +14,8 @@ class Formadmin extends Controller
         $listingsModel = $this->model('ListingsModel');
         $listingsArray = $listingsModel->getListingsDataArray();
         $formArray = $formModel->getFormData();
-        //var_dump($formArray);
         $formModel = $this->model('FormModel');
-        //$formArray = $formModel->getFakeFormData();
 
-        // Anstatt Dinge in der GUI kompliziert zu machen, bauen wir hier die Dinge so zusammen wie 
-        // wir sie brauchen
-        // Diesen Array wollen wir zusammenbauen, dann der GUI übergeben
-        // ABER : Solches Zeug ist eigentlich idealer/performanter auf dem Model zu erledigen!
-        
         $data = [];
         foreach($formArray as $form)
         {

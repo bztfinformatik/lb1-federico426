@@ -12,6 +12,7 @@ class FormModel extends BaseModel
         $name = $data['name'];
         $lastname = $data['lastname'];
         $event = $data['event'];
+        $company = $data['company'];
         $datefrom = $data['datefrom'];
         $dateto = $data['dateto'];
 
@@ -30,11 +31,12 @@ class FormModel extends BaseModel
         //var_dump($data);
        // die(var_dump($data));
 
-        $this->db->query("INSERT INTO Forms (id, name, lastname, event, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :event, :datefrom, :dateto, :listingids, :total, :status)");
+        $this->db->query("INSERT INTO Forms (id, name, lastname, event, company, datefrom, dateto, listingids, total, status) VALUES (:id, :name, :lastname, :event, :datefrom, :dateto, :listingids, :total, :status)");
         $this->db->bind(':id', $id);
         $this->db->bind(':name', $name);
         $this->db->bind(':lastname', $lastname);
         $this->db->bind(':event', $event);
+        $this->db->bind(':company', $company);
         $this->db->bind(':datefrom', $datefrom);
         $this->db->bind(':dateto', $dateto);
         $this->db->bind(':listingids', $listingids);
@@ -88,7 +90,6 @@ class FormModel extends BaseModel
     public function getFormData()
     {
 
-        $id = 1;
 
         /*$this->db->query("SELECT * FROM Forms WHERE id = :id"); // 1. id = datenbank feld 2. platzhalter für variable
         $this->db->bind(":id", $id);

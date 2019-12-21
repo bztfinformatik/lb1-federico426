@@ -13,6 +13,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Nachname</th>
+            <th scope="col">Event</th>
             <th scope="col">von</th>
             <th scope="col">bis</th>
             <th scope="col">Total</th>
@@ -28,6 +29,7 @@
             <th scope="row">{{ datarow.id }}</th>
             <td>{{ datarow.name }}</td>
             <td>{{ datarow.lastname }}</td>
+            <td>{{ datarow.event }}</td>
             <td>{{ datarow.datefrom }}</td>
             <td>{{ datarow.dateto }}</td>
             <td>{{ datarow.total }} CHF</td>
@@ -38,7 +40,7 @@
             <td>
                 <form action="{{ urlroot }}/Forms/change" method="post">
                     <input type="text" name="id" value="{{ datarow.id }}" class="form-control form-control-lg" style="display: none;">
-                    <input type="submit" value="{{ datarow.id }} Akzeptieren" class="btn btn-success {{ datarow.id }}" style="color: white;"></a>
+                    <input type="submit" value="Akzeptieren" class="btn btn-success {{ datarow.id }}" style="color: white;"></a>
                 </form>
             </td>
             {% endif %}

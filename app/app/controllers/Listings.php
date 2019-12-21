@@ -15,10 +15,14 @@ class Listings extends Controller
     }
 
     public function add()
-    {
+    { 
         $listingModel = $this->model('ListingsModel');
+        $formModel = $this->model('FormModel');
+        $forms = $formModel->getFormData();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            var_dump($_POST);
 
             $dateform1 = trim(
                 filter_input(INPUT_POST, 'dateform1', FILTER_SANITIZE_STRING)
@@ -38,22 +42,6 @@ class Listings extends Controller
 
             // Daten setzen
             $data = [
-                'name' => $name,       // Form-Feld-Daten
-                'name_err' => '',
-                'lastname' => $lastname,       // Form-Feld-Daten
-                'lastname_err' => '',
-                'datefrom' => $datefrom,
-                'datefrom_err' => '',
-                'dateto' => $dateto,
-                'dateto_err' => '',
-                'event' => $event,       // Form-Feld-Daten
-                'event_err' => '',
-                'company' => $company,       // Form-Feld-Daten
-                'company_err' => '',
-                'zip' => $zip,       // Form-Feld-Daten
-                'zip_err' => '',
-                'location' => $location,       // Form-Feld-Daten
-                'location_err' => '',
                 'dateform1' => $dateform1,
                 'dateform1_err' => '',
                 'product1' => $product1,
@@ -66,53 +54,10 @@ class Listings extends Controller
             ];
 
 
-            // Gucken ob die Daten plausibel sind
-            // Da müsste man aber noch mehr machen
-            
-            if(empty($data['name']))
-            {
-                $data['name_err'] = 'Bitte Name angeben';
-            }
-
-            if(empty($data['lastname']))
-            {
-                $data['lastname_err'] = 'Bitte Nachname angeben';
-            }
-
-            if(empty($data['event']))
-            {
-                $data['event'] = 'Bitte Anlass angeben';
-            }
-
-            if(empty($data['company']))
-            {
-                $data['company'] = 'Bitte Firma angeben';
-            }
-
-            if(empty($data['datefrom']))
-            {
-                $data['datefrom_err'] = 'Bitte Datum angeben';
-            }
-
-            if(empty($data['dateto']))
-            {
-                $data['dateto_err'] = 'Bitte Datum angeben';
-            }
-
-            if(empty($data['zip']))
-            {
-                $data['zip_err'] = 'Bitte PLZ angeben';
-            }
-
-            if(empty($data['location']))
-            {
-                $data['location_err'] = 'Bitte Ort angeben';
-            }
-
 
 
             // Keine Errors vorhanden
-            if (empty($data['name_err']) && empty($data['lastname_err']) && empty($data['event_err']) && empty($data['company_err']) )
+            if (empty($data['dateform1_err']) && empty($data['product1_err']) && empty($data['price1_err']) && empty($data['VAT1_err']) )
             {
                 // Alles gut, keine Fehler vorhanden
                 // Späteres TODO: Auf DB schreiben
@@ -123,7 +68,7 @@ class Listings extends Controller
                 // Fehler vorhanden - Fehler anzeigen
                 // View laden mit Fehlern
 
-                echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+                echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms]);
             }
 
         } else {
@@ -146,7 +91,7 @@ class Listings extends Controller
                 'location_err' => ''       // Form-Feld-Daten
             ];
 
-            echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+            echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
     }
