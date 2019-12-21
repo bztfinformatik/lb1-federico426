@@ -18,10 +18,13 @@ class Listings extends Controller
     { 
         $listingModel = $this->model('ListingsModel');
         $formModel = $this->model('FormModel');
-        $forms = $formModel->getFormData();
+        $forms = $formModel->getFormData($_SESSION['user_email']);
 
-        echo "<br><br><br><br><br><br>";
-        var_dump($_SESSION);
+        $tester= 1;
+        
+        
+
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

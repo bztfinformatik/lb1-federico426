@@ -42,12 +42,8 @@ class FormModel extends BaseModel
         $this->db->bind(':listingids', $listingids);
         $this->db->bind(':total', $total);
         $this->db->bind(':status', $status);
-        
-        $this->db->execute();
-        
+        $this->db->execute(); 
     }
-
-    
 
     public function acceptSet($id){
         $id = $id;
@@ -56,29 +52,25 @@ class FormModel extends BaseModel
 
     }
 
-    public function getCompleteEntry($id){
+    public function getEntryTotal($id, $data){
         $id = $id;
+        $data = $data;
         $this->db->query("SELECT * FROM Forms WHERE id = '$id'");
-        $formEntry = $this->db->resultSet();
-
-        var_dump($formEntry);
-
-
-
+        $formEntry = $this->db->single();
+        $total = 0;
+        foreach($data as $entry) {
+            $price = $entry['price'];
+            $VAT = $entry['VAT'];
+            $total = $total + (($price/100*$VAT)+$price);
+        }
+        echo $total;
     }
 
-
-    public function getFormData()
-    {
-
-
-        /*$this->db->query("SELECT * FROM Forms WHERE id = :id"); // 1. id = datenbank feld 2. platzhalter für variable
-        $this->db->bind(":id", $id);
-        $data = $this->db->resultSet();*/
-
-        $this->db->query("SELECT * FROM Forms"); // 1. id = datenbank feld 2. platzhalter für variable
-
+    public function getFormData($email)
+    {  
+        $this->db->query("SELECT * FROM Forms WHERE email = '$email'"); // 1. id = datenbank feld 2. platzhalter für variable
         $data = $this->db->resultSet();
+
 
         return $data;
     }

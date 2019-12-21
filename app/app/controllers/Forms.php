@@ -166,7 +166,7 @@ class Forms extends Controller
                 'location' => '',       // Form-Feld-Daten
                 'location_err' => ''       // Form-Feld-Daten
             ];
-            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'menues' => $menueArray]);
+            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
     }

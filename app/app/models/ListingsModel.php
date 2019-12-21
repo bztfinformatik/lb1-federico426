@@ -21,7 +21,6 @@ class ListingsModel extends BaseModel
         $id2 = $this->db->single();
         $id = $id2[0]+1;
 
-
         $formid = $data['event1'];
         $formdate = $data['dateform1'];
         $description = $data['product1'];
@@ -29,10 +28,7 @@ class ListingsModel extends BaseModel
         $VAT = $data['VAT1'];
         $account = $data['account1'];
 
-
-
         $this->db->query("INSERT INTO Listings (id, formid, formdate, description, price, VAT, account) VALUES (:id, :formid, :formdate, :description, :price, :VAT, :account)");
-
         $this->db->bind(':id', $id);
         $this->db->bind(':formid', $formid);
         $this->db->bind(':formdate', $formdate);
@@ -40,13 +36,15 @@ class ListingsModel extends BaseModel
         $this->db->bind(':price', $price);
         $this->db->bind(':VAT', $VAT);
         $this->db->bind(':account', $account);
-
         $this->db->execute();
+    }
 
 
-
-
-
+    public function getEntries($id){
+        $id = $id;
+        $this->db->query("SELECT * FROM Listings WHERE formid = '$id'");
+        $listingEntries = $this->db->resultSet();
+        return $listingEntries;
     }
 
 }
