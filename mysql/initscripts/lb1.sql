@@ -11,6 +11,7 @@ CREATE TABLE `Forms` (
   `id` int(11) NOT NULL,
   `name` text COLLATE utf8_unicode_ci NOT NULL,
   `lastname` text COLLATE utf8_unicode_ci NOT NULL,
+  `event` text COLLATE utf8_unicode_ci NOT NULL,
   `datefrom` date NOT NULL,
   `dateto` date NOT NULL,
   `listingids` int(11) NOT NULL,
@@ -18,13 +19,13 @@ CREATE TABLE `Forms` (
   `status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `Forms` (`id`, `name`, `lastname`, `datefrom`, `dateto`, `listingids`, `total`, `status`) VALUES
-(1, 'Federico', 'Degan',  '2019-11-17', '2019-11-20', 1,  12.5, 0),
-(2, 'Federico Degan', 'Degan',  '2019-11-13', '2019-11-21', 2,  123,  1),
-(3, 'Federico Degan', 'Degan',  '2019-11-24', '2019-11-24', 3,  274.29, 0),
-(4, 'Federico Degan', 'Degan',  '2019-11-24', '2019-11-24', 4,  137.76, 1),
-(5, 'Federico Degan', 'Degan',  '2019-11-28', '2019-11-29', 5,  262.08, 0)
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `lastname` = VALUES(`lastname`), `datefrom` = VALUES(`datefrom`), `dateto` = VALUES(`dateto`), `listingids` = VALUES(`listingids`), `total` = VALUES(`total`), `status` = VALUES(`status`);
+INSERT INTO `Forms` (`id`, `name`, `lastname`, `event`, `datefrom`, `dateto`, `listingids`, `total`, `status`) VALUES
+(1, 'Federico', 'Degan', 'Degan', '2019-11-17', '2019-11-20', 1,  12.5, 0),
+(2, 'Federico Degan', 'Degan', 'Weihnachtsfeier', '2019-11-13', '2019-11-21', 2,  123,  1),
+(3, 'Federico Degan', 'Degan', 'Event in Bern', '2019-11-24', '2019-11-24', 3,  274.29, 0),
+(4, 'Federico Degan', 'Degan', 'Reise nach Köln', '2019-11-24', '2019-11-24', 4,  137.76, 1),
+(5, 'Federico Degan', 'Degan', 'Kundenbesuch', '2019-11-28', '2019-11-29', 5,  262.08, 0)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `lastname` = VALUES(`lastname`), `event` = VALUES(`event`), `datefrom` = VALUES(`datefrom`), `dateto` = VALUES(`dateto`), `listingids` = VALUES(`listingids`), `total` = VALUES(`total`), `status` = VALUES(`status`);
 
 DROP TABLE IF EXISTS `Listings`;
 CREATE TABLE `Listings` (
