@@ -13,4 +13,40 @@ class ListingsModel extends BaseModel
         return $data;
     }
 
+    public function writeListings($data){
+
+    	var_dump($data);
+
+    	$this->db->query("SELECT id FROM Listings ORDER BY id DESC LIMIT 1");
+        $id2 = $this->db->single();
+        $id = $id2[0]+1;
+
+
+        $formid = $data['event1'];
+        $formdate = $data['dateform1'];
+        $description = $data['product1'];
+        $price = $data['price1'];
+        $VAT = $data['VAT1'];
+        $account = $data['account1'];
+
+
+
+        $this->db->query("INSERT INTO Listings (id, formid, formdate, description, price, VAT, account) VALUES (:id, :formid, :formdate, :description, :price, :VAT, :account)");
+
+        $this->db->bind(':id', $id);
+        $this->db->bind(':formid', $formid);
+        $this->db->bind(':formdate', $formdate);
+        $this->db->bind(':description', $description);
+        $this->db->bind(':price', $price);
+        $this->db->bind(':VAT', $VAT);
+        $this->db->bind(':account', $account);
+
+        $this->db->execute();
+
+
+
+
+
+    }
+
 }

@@ -22,7 +22,11 @@ class Listings extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            var_dump($_POST);
+            //var_dump($_POST);
+
+            $event1 = trim(
+                filter_input(INPUT_POST, 'event1', FILTER_SANITIZE_STRING)
+            );
 
             $dateform1 = trim(
                 filter_input(INPUT_POST, 'dateform1', FILTER_SANITIZE_STRING)
@@ -36,12 +40,17 @@ class Listings extends Controller
             $VAT1 = trim(
                 filter_input(INPUT_POST, 'VAT1', FILTER_SANITIZE_STRING)
             );
+            $account1 = trim(
+                filter_input(INPUT_POST, 'account1', FILTER_SANITIZE_STRING)
+            );
 
 
 
 
             // Daten setzen
             $data = [
+                'event1' => $event1,
+                'event1_err' => '',
                 'dateform1' => $dateform1,
                 'dateform1_err' => '',
                 'product1' => $product1,
@@ -49,7 +58,9 @@ class Listings extends Controller
                 'price1' => $price1,
                 'price1_err' => '',
                 'VAT1' => $VAT1,
-                'VAT1_err' => ''
+                'VAT1_err' => '',
+                'account1' => $account1,
+                'account1_err' => ''
 
             ];
 
@@ -62,7 +73,7 @@ class Listings extends Controller
                 // Alles gut, keine Fehler vorhanden
                 // Späteres TODO: Auf DB schreiben
                 //die('SUCCESS');
-                $formModel->writeData($data);
+                $listingModel->writeListings($data);
             }
             else {
                 // Fehler vorhanden - Fehler anzeigen
