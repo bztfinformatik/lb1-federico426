@@ -8,7 +8,8 @@ class Forms extends Controller
     public function index($name = '')
     {
         if (isset($_SESSION['user_id'])) {
-        echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT]);
+            $uservariables = $_SESSION;
+        echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT, 'uservariables' => $uservariables]);
         }else{
             redirect('Users/Login');
         }
@@ -16,6 +17,7 @@ class Forms extends Controller
     public function add()
     {
         if (isset($_SESSION['user_id'])) {
+            $uservariables = $_SESSION;
         $formModel = $this->model('FormModel');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_SESSION['user_email'];
@@ -143,7 +145,7 @@ class Forms extends Controller
                 'location' => '',       
                 'location_err' => ''      
             ];
-            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
+            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'uservariables' => $uservariables]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
         }else{

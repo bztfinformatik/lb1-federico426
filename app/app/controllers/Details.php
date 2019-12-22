@@ -8,7 +8,8 @@ class Details extends Controller
     public function index($name = '')
     {   
         if (isset($_SESSION['user_id'])) {
-            echo $this->twig->render('detailpage/index.twig.html', ['title' => "Spesen - Detail / Index", 'urlroot' => URLROOT]);
+            $uservariables = $_SESSION;
+            echo $this->twig->render('detailpage/index.twig.html', ['title' => "Spesen - Detail / Index", 'urlroot' => URLROOT, 'uservariables' => $uservariables]);
         }else{
             redirect('Users/Login');
         }
@@ -16,6 +17,7 @@ class Details extends Controller
 
     public function show(){
         if (isset($_SESSION['user_id'])) {
+            $uservariables = $_SESSION;
             $formModel = $this->model('FormModel');
             $listingModel = $this->model('ListingsModel');
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,7 +27,7 @@ class Details extends Controller
                 $total = $listingModel->getEntryTotal($listingModel->getEntries($id));
                 $singleForm['allCosts'] = $total;
 
-                echo $this->twig->render('detailpage/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'singleForm' => $singleForm, 'listings' => $listings]);
+                echo $this->twig->render('detailpage/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'singleForm' => $singleForm, 'listings' => $listings, 'uservariables' => $uservariables]);
             }else {
                 echo "No Post";
             }

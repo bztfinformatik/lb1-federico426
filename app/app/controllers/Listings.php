@@ -8,7 +8,8 @@ class Listings extends Controller
     public function index($name = '')
     {
         if (isset($_SESSION['user_id'])) {
-            echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT]);
+            $uservariables = $_SESSION;
+            echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT, 'uservariables' => $uservariables]);
         }else{
             redirect('Users/Login');
         }
@@ -17,6 +18,7 @@ class Listings extends Controller
     public function add()
     { 
         if (isset($_SESSION['user_id'])) {
+            $uservariables = $_SESSION;
             $listingModel = $this->model('ListingsModel');
             $formModel = $this->model('FormModel');
             $forms = $formModel->getFormData($_SESSION['user_email']);
@@ -66,27 +68,10 @@ class Listings extends Controller
                 else {
                     // Fehler vorhanden - Fehler anzeigen
                     // View laden mit Fehlern
-                    echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms]);
+                    echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
                 }
-            } else {
-                // Init Form mit Default-Daten, weil Get-Aufruf
-                $data = [
-                    'name' => '',       // Form-Feld-Daten
-                    'name_err' => '',
-                    'lastname' => '',       // Form-Feld-Daten
-                    'lastname_err' => '',
-                    'datefrom' => '',
-                    'dateto' => '',
-                    'event' => '',       // Form-Feld-Daten
-                    'event_err' => '',
-                    'company' => '',       // Form-Feld-Daten
-                    'company_err' => '',
-                    'zip' => '',       // Form-Feld-Daten
-                    'zip_err' => '',
-                    'location' => '',       // Form-Feld-Daten
-                    'location_err' => ''       // Form-Feld-Daten
-                ];
-                echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms]);
+            }else{
+                echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
             }
             header("Location: http://localhost:8000/public/Formadmin/");
         }else{

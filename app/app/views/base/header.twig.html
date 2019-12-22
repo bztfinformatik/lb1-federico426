@@ -12,6 +12,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{{ urlroot }}/Home">Home <span class="sr-only">(current)</span></a>
           </li>
+          {% if uservariables is defined %}
           <li class="nav-item">
             <a class="nav-link" href="{{ urlroot }}/Forms/add">Neues Spesenformular</a>
           </li>
@@ -21,21 +22,21 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ urlroot }}/Formadmin/">Eigene Formulare</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ urlroot }}/Users/">User</a>
-          </li>
+          {% endif %}
         </ul>
-
         <ul class="navbar-nav ml-auto">
+          {% if uservariables is defined %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ urlroot }}/Users/register">Register</a>
+            <a class="nav-link" href="{{ urlroot }}/Users/logout">Logout</a>
           </li>
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{{ urlroot }}/Users/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ urlroot }}/Users/logout">Logout</a>
+            <a class="nav-link" href="{{ urlroot }}/Users/register">Register</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
