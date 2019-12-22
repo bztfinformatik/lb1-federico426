@@ -24,9 +24,9 @@ CREATE TABLE `Forms` (
 INSERT INTO `Forms` (`id`, `email`, `name`, `lastname`, `event`, `company`, `datefrom`, `dateto`, `listingids`, `total`, `status`) VALUES
 (1,'federico.degan@yahoo.com', 'Federico', 'Degan', 'Event', 'Casasoft', '2019-11-17', '2019-11-20', 1,  12.5, 0),
 (2,'federico.degan@yahoo.com', 'Federico Degan', 'Degan', 'Weihnachtsfeier', 'Casasoft', '2019-11-13', '2019-11-21', 2,  123,  1),
-(3,'federico.degan@yahoo.com', 'Federico Degan', 'Degan', 'Event in Bern', 'Casasoft', '2019-11-24', '2019-11-24', 3,  274.29, 0),
+(3,'user_passuser@test.ch', 'Federico Degan', 'Degan', 'Event in Bern', 'Casasoft', '2019-11-24', '2019-11-24', 3,  274.29, 0),
 (4,'federico.degan@yahoo.com', 'Federico Degan', 'Degan', 'Reise nach Köln', 'Immoscout24', '2019-11-24', '2019-11-24', 4,  137.76, 1),
-(5,'federico.degan@yahoo.com', 'Federico Degan', 'Degan', 'Kundenbesuch', 'Immoscout24', '2019-11-28', '2019-11-29', 5,  262.08, 0)
+(5,'user_passuser@test.ch', 'Federico Degan', 'Degan', 'Kundenbesuch', 'Immoscout24', '2019-11-28', '2019-11-29', 5,  262.08, 0)
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`),`email` = VALUES(`email`), `name` = VALUES(`name`), `lastname` = VALUES(`lastname`), `event` = VALUES(`event`), `company` = VALUES(`company`), `datefrom` = VALUES(`datefrom`), `dateto` = VALUES(`dateto`), `listingids` = VALUES(`listingids`), `total` = VALUES(`total`), `status` = VALUES(`status`);
 
 DROP TABLE IF EXISTS `Listings`;

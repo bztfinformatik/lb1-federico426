@@ -77,7 +77,6 @@ class FormModel extends BaseModel
 
         $email = $session['user_email'];
         $roles = $session['user_roles'];
-        var_dump($roles);
         if (in_array("admin", $roles)) {
             $this->db->query("SELECT * FROM Forms"); // 1. id = datenbank feld 2. platzhalter für variable
             $data = $this->db->resultSet();

@@ -3,6 +3,20 @@
 {% block content %}
 
 <!-- Wir überschreiben den Content-Block -->
-<h1 class="mt-5">Home Index</h1>
+{% if uservariables is defined %}
+<h1 class="mt-5">Wilkommen {{ uservariables.user_name }}</h1>
+<div class="row">
+	<div class="col-6">
+		<h2>Bist du bereit neue Spesenformulare zu erfassen?</h2>
+	</div>
+</div>
+{% else %}
+<h1 class="mt-5">Wilkommen</h1>
+<div class="row">
+	<div class="col-6">
+		<h2>Du bist nicht angemeldet, um dieses tolle Applikation nutzen zu können ist dies zwingend erforderlich.</h2>
+	</div>
+</div>
+{% endif %}
 
 {% endblock %}
