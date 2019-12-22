@@ -4,7 +4,7 @@ class Home extends Controller
 {
     public function index($name = '')
     {
-    	if (isset($_SESSION)) {
+    	if (isset($_SESSION['user_id'])) {
     		$uservariables = $_SESSION;
     		echo $this->twig->render('home/index.twig.html', ['title' => "Home / Index", 'urlroot' => URLROOT, 'uservariables' => $uservariables]); 
     	}else
