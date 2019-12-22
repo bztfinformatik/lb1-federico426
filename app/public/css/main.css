@@ -1,0 +1,93 @@
+body {
+	font-family: 'Noto Sans TC', sans-serif;
+	background: #342E37;
+	background-image: url("../img/newbg.jpg");
+	background: cover;
+}
+
+.footer{
+	display: none;
+}
+
+.bg-dark{
+	background: linear-gradient(90deg, rgba(195,130,216,1) 0%, rgba(255,93,115,1) 100%);
+}
+
+#header-nav{
+	font-family: 'Nunito Sans', sans-serif;
+	color: white;
+}
+
+.navbar-brand{
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 900!important;
+}
+
+a.nav-link{
+	color: white!important;
+}
+
+.card{
+	border: none;
+	border-radius: 0;
+	color: white;
+}
+
+.card-body{
+	padding: 20px;
+}
+
+.mt-5{
+	margin-bottom: 3rem;
+}
+
+.titleblock{
+	margin-top: 10px!important;
+}
+
+.bg-light{
+	background-color: #262228!important;
+}
+
+.form-control, .input-group{
+	border-radius: 0;
+	background-color: #262228;
+	color: white;
+	border: 1px solid #342E37;
+	padding: .5rem 1rem;
+    font-size: 1.25rem;
+	transition: 0.5s;
+}
+.form-control:focus, .input-group:focus, .form-control:focus-within, .input-group:focus-within{
+	border-radius: 0;
+	background-color: #262228;
+	color: white;
+	border: 1px solid #FF5D73;
+	box-shadow: none;
+	outline: 0;
+}
+
+.btn{
+	border-radius: 0;
+	border: none;
+	background: linear-gradient(90deg, rgba(195,130,216,1) 0%, rgba(255,93,115,1) 100%);
+	box-shadow: none!important;
+	transition: 0.5s;
+}
+.btn:hover{
+	background: linear-gradient(90deg, rgba(255,93,115,1) 0%, rgba(195,130,216,1) 100%);
+}
+.btn:active, .btn:focus, .btn-success:focus, .btn-success.focus{
+	outline: 0!important;
+	box-shadow: none!important;
+} 
+
+.table .thead-dark th{
+	background-color: unset;
+}
+
+.table{
+	color: white;
+}
+
+

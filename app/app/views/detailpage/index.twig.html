@@ -3,71 +3,78 @@
 {% block content %}
 
 <!-- Wir überschreiben den Content-Block -->
-<h1 class="mt-5">Spesenformular Nr.{{ singleForm.id }} </h1>
+<div class="row">
+    <div class="col-md-12 mx-auto">
+        <div class="card card-body bg-light mt-5">
+            <h1 class="mt-5 titleblock">Spesenformular Nr.{{ singleForm.id }} </h1>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Nachname</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">Firma</th>
+                        <th scope="col">von</th>
+                        <th scope="col">bis</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Status</th>
+                        {% if uservariables.isAdmin == true %}
+                        <th scope="col">Aktion</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
 
-<!-- {{ dump(data) }} -->
+                        <td>{{ singleForm.name }}</td>
+                        <td>{{ singleForm.lastname }}</td>
+                        <td>{{ singleForm.event }}</td>
+                        <td>{{ singleForm.company }}</td>
+                        <td>{{ singleForm.datefrom }}</td>
+                        <td>{{ singleForm.dateto }}</td>
+                        <td>{{ singleForm.allCosts }}</td>
+                        {% if singleForm.status == true %}
+                        <td>Akzeptiert</td>
+                        {% elseif singleForm.status == false %}
+                        <td>Offen</td>
+                        {% if uservariables.isAdmin == true %}
+                        <td>
+                            <form action="{{ urlroot }}/Forms/change" method="post">
+                                <input type="text" name="id" value="{{ singleForm.id }}" class="form-control form-control-lg" style="display: none;">
+                                <input type="submit" value="Akzeptieren" class="btn btn-success {{ singleForm.id }}" style="color: white;"></a>
+                            </form>
+                        </td>
+                        {% endif %}
+                        {% endif %}
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Nachname</th>
-            <th scope="col">Event</th>
-            <th scope="col">Firma</th>
-            <th scope="col">von</th>
-            <th scope="col">bis</th>
-            <th scope="col">Total</th>
-            <th scope="col">Status</th>
-            <th scope="col">Aktion</th>
+                </tbody>
+            </table>
 
-        </tr>
-    </thead>
-    <tbody>
+            <h2>Spesenpositionen</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Ref.</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Beschreibung</th>
+                        <th scope="col">Kosten</th>
+                        <th scope="col">Mehrwertsteuer</th>
+                        <th scope="col">Account</th>
 
-            <td>{{ singleForm.name }}</td>
-            <td>{{ singleForm.lastname }}</td>
-            <td>{{ singleForm.event }}</td>
-            <td>{{ singleForm.company }}</td>
-            <td>{{ singleForm.datefrom }}</td>
-            <td>{{ singleForm.dateto }}</td>
-            <td>{{ singleForm.allCosts }}</td>
-            {% if singleForm.status == true %}
-            <td>Akzeptiert</td>
-            {% elseif singleForm.status == false %}
-            <td>Offen</td>
-            <td>
-                <form action="{{ urlroot }}/Forms/change" method="post">
-                    <input type="text" name="id" value="{{ singleForm.id }}" class="form-control form-control-lg" style="display: none;">
-                    <input type="submit" value="Akzeptieren" class="btn btn-success {{ singleForm.id }}" style="color: white;"></a>
-                </form>
-            {% endif %}
-
-    </tbody>
-</table>
-
-<h2>Spesenpositionen</h2>
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Ref.</th>
-            <th scope="col">Datum</th>
-            <th scope="col">Beschreibung</th>
-            <th scope="col">Kosten</th>
-            <th scope="col">Mehrwertsteuer</th>
-            <th scope="col">Account</th>
-
-        </tr>
-    </thead>
-    {% for listing in listings %}
-    <tbody>
-            <td>{{ listing.id }}</td>
-            <td>{{ listing.formdate }}</td>
-            <td>{{ listing.description }}</td>
-            <td>{{ listing.price }}</td>
-            <td>{{ listing.VAT }}</td>
-            <td>{{ listing.account }}</td>
-    </tbody>
-    {% endfor %}
-</table>
+                    </tr>
+                </thead>
+                {% for listing in listings %}
+                <tbody>
+                        <td>{{ listing.id }}</td>
+                        <td>{{ listing.formdate }}</td>
+                        <td>{{ listing.description }}</td>
+                        <td>{{ listing.price }}</td>
+                        <td>{{ listing.VAT }}%</td>
+                        <td>{{ listing.account }}</td>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

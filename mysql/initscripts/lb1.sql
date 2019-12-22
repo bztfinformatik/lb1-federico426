@@ -41,9 +41,9 @@ CREATE TABLE `Listings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `Listings` (`id`, `formid`, `formdate`, `description`, `price`, `VAT`, `account`) VALUES
-(0, 1,  '2019-11-21', 'FORM1',  999,  78, 100),
-(0, 2,  '2019-11-30', '1223', 123,  7,  100),
-(0, 3,  '2019-11-20', 'qewd', 123,  123,  100),
-(0, 4,  '2019-11-30', 'wqrwer', 123,  12, 100),
-(0, 5,  '2019-11-22', 'wwferfger',  234,  12, 100)
+(0, 1,  '2019-11-21', 'FORM1',  999,  7, 100),
+(0, 2,  '2019-11-30', 'Zugticket', 123,  7,  100),
+(0, 3,  '2019-11-20', 'Hotelzimmer', 200,  5,  100),
+(0, 4,  '2019-11-30', 'Nachtessen', 24,  4, 200),
+(0, 5,  '2019-11-22', '200km Auto',  50,  7, 100)
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `formid` = VALUES(`formid`), `formdate` = VALUES(`formdate`), `description` = VALUES(`description`), `price` = VALUES(`price`), `VAT` = VALUES(`VAT`), `account` = VALUES(`account`);
