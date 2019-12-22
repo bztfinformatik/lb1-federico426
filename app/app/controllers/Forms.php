@@ -125,7 +125,7 @@ class Forms extends Controller
                 $formModel->writeData($data);
             }
             else {
-                echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
+                echo $this->twig->render('form/add.twig.html', ['title' => "Neues Formular", 'urlroot' => URLROOT, 'data' => $data]);
             }
 
         } else {
@@ -145,7 +145,7 @@ class Forms extends Controller
                 'location' => '',       
                 'location_err' => ''      
             ];
-            echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'uservariables' => $uservariables]);
+            echo $this->twig->render('form/add.twig.html', ['title' => "Neues Formular", 'urlroot' => URLROOT, 'data' => $data, 'uservariables' => $uservariables]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
         }else{

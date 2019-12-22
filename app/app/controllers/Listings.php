@@ -9,7 +9,7 @@ class Listings extends Controller
     {
         if (isset($_SESSION['user_id'])) {
             $uservariables = $_SESSION;
-            echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT, 'uservariables' => $uservariables]);
+            echo $this->twig->render('form/index.twig.html', ['title' => "Neue Position", 'urlroot' => URLROOT, 'uservariables' => $uservariables]);
         }else{
             redirect('Users/Login');
         }
@@ -68,10 +68,10 @@ class Listings extends Controller
                 else {
                     // Fehler vorhanden - Fehler anzeigen
                     // View laden mit Fehlern
-                    echo $this->twig->render('lisitng/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
+                    echo $this->twig->render('lisitng/add.twig.html', ['title' => "Neue Position", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
                 }
             }else{
-                echo $this->twig->render('listing/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
+                echo $this->twig->render('listing/add.twig.html', ['title' => "Neue Position", 'urlroot' => URLROOT, 'data' => $data, 'forms' => $forms, 'uservariables' => $uservariables]);
             }
             header("Location: http://localhost:8000/public/Formadmin/");
         }else{

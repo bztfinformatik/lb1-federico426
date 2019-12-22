@@ -27,7 +27,7 @@ class Details extends Controller
                 $total = $listingModel->getEntryTotal($listingModel->getEntries($id));
                 $singleForm['allCosts'] = $total;
 
-                echo $this->twig->render('detailpage/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'singleForm' => $singleForm, 'listings' => $listings, 'uservariables' => $uservariables]);
+                echo $this->twig->render('detailpage/index.twig.html', ['title' => "Detailpage", 'urlroot' => URLROOT, 'singleForm' => $singleForm, 'listings' => $listings, 'uservariables' => $uservariables]);
             }else {
                 echo "No Post";
             }

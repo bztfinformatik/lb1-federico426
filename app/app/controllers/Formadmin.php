@@ -21,7 +21,7 @@ class Formadmin extends Controller
                 $uservariables['isAdmin'] = true;
             }
 
-            echo $this->twig->render('formadmin/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'data' => $data, 'uservariables' => $uservariables] );
+            echo $this->twig->render('formadmin/index.twig.html', ['title' => "Formulare", 'urlroot' => URLROOT, 'data' => $data, 'uservariables' => $uservariables] );
                 
         }else{
             redirect('Users/Login');
