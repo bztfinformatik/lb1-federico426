@@ -8,8 +8,8 @@ class Formadmin extends Controller
     public function index($name = '')
 
     {
-
-        $formModel = $this->model('FormModel');
+        if (isset($_SESSION['user_id'])) {
+            $formModel = $this->model('FormModel');
         $listingsModel = $this->model('ListingsModel');
         $formArray = $formModel->getFormData($_SESSION['user_email']);
 
@@ -22,6 +22,12 @@ class Formadmin extends Controller
             }            
             array_push($data, $orderrow);
         }
-        echo $this->twig->render('formadmin/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'data' => $data] );                
+        echo $this->twig->render('formadmin/index.twig.html', ['title' => "Order - Listing", 'urlroot' => URLROOT, 'data' => $data] );
+            
+        }else{
+            redirect('Users/Login');
+        }
+
+                        
     }
 }

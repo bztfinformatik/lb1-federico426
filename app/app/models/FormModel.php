@@ -26,7 +26,7 @@ class FormModel extends BaseModel
         //$this->writeListings($data, $id);
 
         //$total = ($data['price1']/100*$data['VAT1'])+$data['price1'];
-        $total = 123;
+        $total = 0;
         $status = 0;
 
 
@@ -52,18 +52,24 @@ class FormModel extends BaseModel
 
     }
 
-    public function getEntryTotal($id, $data){
+ 
+
+    public function getFormByID($id){
         $id = $id;
-        $data = $data;
         $this->db->query("SELECT * FROM Forms WHERE id = '$id'");
-        $formEntry = $this->db->single();
-        $total = 0;
-        foreach($data as $entry) {
-            $price = $entry['price'];
-            $VAT = $entry['VAT'];
-            $total = $total + (($price/100*$VAT)+$price);
-        }
-        echo $total;
+        $Form = $this->db->single();
+        $newData['id'] = $Form['id'];
+        $newData['email'] = $Form['email'];
+        $newData['name'] = $Form['name'];
+        $newData['lastname'] = $Form['lastname'];
+        $newData['event'] = $Form['event'];
+        $newData['company'] = $Form['company'];
+        $newData['datefrom'] = $Form['datefrom'];
+        $newData['dateto'] = $Form['dateto'];
+        $newData['listingids'] = $Form['listingids'];
+        $newData['total'] = $Form['total'];
+        $newData['status'] = $Form['status'];
+        return $newData;
     }
 
     public function getFormData($email)

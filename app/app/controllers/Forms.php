@@ -7,23 +7,17 @@ class Forms extends Controller
 
     public function index($name = '')
     {
-        /**
-         * Hier könnte eine allgemeine Übersichts-Auswertung der aktuellen Auslastung der
-         * Mense platziert werden
-         */
-
+        if (isset($_SESSION['user_id'])) {
         echo $this->twig->render('form/index.twig.html', ['title' => "Spesen - Placement / Index", 'urlroot' => URLROOT]);
+        }else{
+            redirect('Users/Login');
+        }
     }
-
     public function add()
     {
+        if (isset($_SESSION['user_id'])) {
         $formModel = $this->model('FormModel');
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Process Form -> weil Post-Aufruf
-
-            // Zuerst mal trimen und filtern auf Gesunde Daten
-
             $email = $_SESSION['user_email'];
             $name = trim(
                 filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING)
@@ -61,35 +55,26 @@ class Forms extends Controller
             $VAT1 = trim(
                 filter_input(INPUT_POST, 'VAT1', FILTER_SANITIZE_STRING)
             );
-
-
-
-
-            // Daten setzen
             $data = [
                 'email' => $email,
-                'name' => $name,       // Form-Feld-Daten
+                'name' => $name,     
                 'name_err' => '',
-                'lastname' => $lastname,       // Form-Feld-Daten
+                'lastname' => $lastname,  
                 'lastname_err' => '',
                 'datefrom' => $datefrom,
                 'datefrom_err' => '',
                 'dateto' => $dateto,
                 'dateto_err' => '',
-                'event' => $event,       // Form-Feld-Daten
+                'event' => $event,  
                 'event_err' => '',
-                'company' => $company,       // Form-Feld-Daten
+                'company' => $company,
                 'company_err' => '',
-                'zip' => $zip,       // Form-Feld-Daten
+                'zip' => $zip,      
                 'zip_err' => '',
-                'location' => $location,       // Form-Feld-Daten
+                'location' => $location,      
                 'location_err' => ''
             ];
 
-
-            // Gucken ob die Daten plausibel sind
-            // Da müsste man aber noch mehr machen
-            
             if(empty($data['name']))
             {
                 $data['name_err'] = 'Bitte Name angeben';
@@ -132,58 +117,52 @@ class Forms extends Controller
 
 
             echo "wir sind hier <br>";
-            // Keine Errors vorhanden
             if (empty($data['name_err']) && empty($data['lastname_err']) && empty($data['event_err']) && empty($data['company_err']) )
             {
-                // Alles gut, keine Fehler vorhanden
-                // Späteres TODO: Auf DB schreiben
-                //die('SUCCESS');
                 echo "wir sind hier <br>";
                 $formModel->writeData($data);
             }
             else {
-                // Fehler vorhanden - Fehler anzeigen
-                // View laden mit Fehlern
                 echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
             }
 
         } else {
-            // Init Form mit Default-Daten, weil Get-Aufruf
-
             $data = [
-                'name' => '',       // Form-Feld-Daten
+                'name' => '',      
                 'name_err' => '',
-                'lastname' => '',       // Form-Feld-Daten
+                'lastname' => '',       
                 'lastname_err' => '',
                 'datefrom' => '',
                 'dateto' => '',
-                'event' => '',       // Form-Feld-Daten
+                'event' => '',       
                 'event_err' => '',
-                'company' => '',       // Form-Feld-Daten
+                'company' => '',       
                 'company_err' => '',
-                'zip' => '',       // Form-Feld-Daten
+                'zip' => '',      
                 'zip_err' => '',
-                'location' => '',       // Form-Feld-Daten
-                'location_err' => ''       // Form-Feld-Daten
+                'location' => '',       
+                'location_err' => ''      
             ];
             echo $this->twig->render('form/add.twig.html', ['title' => "Order - Add", 'urlroot' => URLROOT, 'data' => $data]);
         }
         header("Location: http://localhost:8000/public/Formadmin/");
+        }else{
+            redirect('Users/Login');
+        }
     }
 
     public function change(){
-       $formModel = $this->model('FormModel');
-       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id = $_POST['id'];
-        //var_dump($_POST);
-
-        //echo $id;
-        $formModel->acceptSet($id);
-
-
-       }else {
-        echo "No Post";
-       }
-    header("Location: http://localhost:8000/public/Formadmin/");
+        if (isset($_SESSION['user_id'])) {
+            $formModel = $this->model('FormModel');
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id = $_POST['id'];
+                $formModel->acceptSet($id);
+            }else {
+                echo "No Post";
+            }
+        header("Location: http://localhost:8000/public/Formadmin/");
+        }else{
+            redirect('Users/Login');
+        }
     }
 }

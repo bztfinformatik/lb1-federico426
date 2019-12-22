@@ -15,7 +15,6 @@ class ListingsModel extends BaseModel
 
     public function writeListings($data){
 
-    	var_dump($data);
 
     	$this->db->query("SELECT id FROM Listings ORDER BY id DESC LIMIT 1");
         $id2 = $this->db->single();
@@ -27,6 +26,8 @@ class ListingsModel extends BaseModel
         $price = $data['price1'];
         $VAT = $data['VAT1'];
         $account = $data['account1'];
+
+        $this->updateTotal($id, $value);
 
         $this->db->query("INSERT INTO Listings (id, formid, formdate, description, price, VAT, account) VALUES (:id, :formid, :formdate, :description, :price, :VAT, :account)");
         $this->db->bind(':id', $id);
@@ -45,6 +46,24 @@ class ListingsModel extends BaseModel
         $this->db->query("SELECT * FROM Listings WHERE formid = '$id'");
         $listingEntries = $this->db->resultSet();
         return $listingEntries;
+    }
+
+    public function updateTotal($id, $invalue){
+        $id = $id;
+     
+
+    }
+
+    public function getEntryTotal($data){
+
+        $data = $data;
+        $total = 0;
+
+        foreach($data as $entry) {
+            $price = $entry['price'];
+            $total = $total + $price;
+        }
+        return $total;
     }
 
 }
