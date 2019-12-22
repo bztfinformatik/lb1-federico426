@@ -72,10 +72,19 @@ class FormModel extends BaseModel
         return $newData;
     }
 
-    public function getFormData($email)
+    public function getFormData($session)
     {  
-        $this->db->query("SELECT * FROM Forms WHERE email = '$email'"); // 1. id = datenbank feld 2. platzhalter für variable
-        $data = $this->db->resultSet();
+
+        $email = $session['user_email'];
+        $roles = $session['user_roles'];
+        var_dump($roles);
+        if (in_array("admin", $roles)) {
+            $this->db->query("SELECT * FROM Forms"); // 1. id = datenbank feld 2. platzhalter für variable
+            $data = $this->db->resultSet();
+        }else{
+            $this->db->query("SELECT * FROM Forms WHERE email = '$email'"); // 1. id = datenbank feld 2. platzhalter für variable
+            $data = $this->db->resultSet();
+        }
 
 
         return $data;

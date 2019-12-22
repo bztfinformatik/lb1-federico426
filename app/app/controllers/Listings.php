@@ -21,7 +21,7 @@ class Listings extends Controller
             $uservariables = $_SESSION;
             $listingModel = $this->model('ListingsModel');
             $formModel = $this->model('FormModel');
-            $forms = $formModel->getFormData($_SESSION['user_email']);
+            $forms = $formModel->getFormData($_SESSION);
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 //var_dump($_POST);
                 $event1 = trim(
